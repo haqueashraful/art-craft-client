@@ -3,6 +3,7 @@ import App from "../App";
 import Main from "../Layout/Main";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
+import AddCraftItem from "../Components/AddCraftItem";
 
 const Routes = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register />
+            },
+            {
+                path: '/addcraftitem',
+                element: <AddCraftItem />
             }
         ]
     }

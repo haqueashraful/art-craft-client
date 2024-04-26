@@ -1,0 +1,9 @@
+.active{
+    border-bottom: none;
+    background-color: rgb(74 222 128 / 0.5);
+    color: white;
+}
+
+.btn-rn{
+    @apply hover:bg-green-400/50 text-black hover:text-white  text-xl border-b-2 border-green-400 md:px-3 md:py-2 py-1 px-2 rounded-lg
+}

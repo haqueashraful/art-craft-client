@@ -18,11 +18,13 @@ const Login = () => {
   } = useForm();
   const googleSignIn = () => {
     signInWithGoogle()
-      .then(() => {
+      .then((user) => {
+        console.log(user)
         setLoader(true);
         toast.success("Login with Google Successful");
         setLoader(false);
         navigate(location?.state ? location.state : "/");
+        setLoader(false);
       })
       .catch((error) => {
         toast.error(error.message);
@@ -37,6 +39,7 @@ const Login = () => {
         setLoader(false);
         toast.success("Login with Twitter Successful");
         navigate(location?.state ? location.state : "/");
+        setLoader(false);
       })
       .catch((error) => {
         toast.error(error.message);
@@ -50,6 +53,7 @@ const Login = () => {
         setLoader(false);
         toast.success("Login with GitHub Successful");
         navigate(location?.state ? location.state : "/");
+        setLoader(false);
       })
       .catch((error) => {
         console.log(error)
