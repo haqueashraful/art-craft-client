@@ -1,15 +1,19 @@
 import { useForm } from 'react-hook-form';
+import { useLoaderData } from 'react-router-dom';
 
 const UpdateCraftItem = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm(); 
+
+  const craft = useLoaderData();
+  console.log(craft)
+  const { _id, imageUrl, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus } = craft || {};
 
   const onSubmit = (data) => {
-    console.log('Updating craft item:', data);
-    // Replace with your actual update logic
+    console.log(_id)
   };
 
   return (
@@ -22,6 +26,7 @@ const UpdateCraftItem = () => {
             type="text"
             id="imageUrl"
             name="imageUrl"
+            value={imageUrl}
             {...register('imageUrl', { required: true })} // Add validation rule
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.imageUrl ? 'border-red-500' : ''
@@ -35,6 +40,7 @@ const UpdateCraftItem = () => {
             type="text"
             id="itemName"
             name="itemName"
+            value={itemName}
             {...register('itemName', { required: true })} // Add validation rule
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.itemName ? 'border-red-500' : ''
@@ -48,6 +54,7 @@ const UpdateCraftItem = () => {
             type="text"
             id="subcategoryName"
             name="subcategoryName"
+            value={subcategoryName}
             {...register('subcategoryName', { required: true })} // Add validation rule
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.subcategoryName ? 'border-red-500' : ''
@@ -63,6 +70,7 @@ const UpdateCraftItem = () => {
             id="shortDescription"
             name="shortDescription"
             rows="4"
+            value={shortDescription}
             {...register('shortDescription', { required: true })} // Add validation rule
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.shortDescription ? 'border-red-500' : ''
@@ -78,6 +86,7 @@ const UpdateCraftItem = () => {
             type="number"
             id="price"
             name="price"
+            value={price}
             {...register('price', { required: true })} // Add validation rule
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.price ? 'border-red-500' : ''
@@ -91,6 +100,7 @@ const UpdateCraftItem = () => {
             type="number"
             id="rating"
             name="rating"
+            value={rating}
             {...register('rating', { required: true })} // Add validation rule
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.rating ? 'border-red-500' : ''
@@ -103,6 +113,7 @@ const UpdateCraftItem = () => {
           <select
             id="customization"
             name="customization"
+            value={customization}
             {...register('customization', { required: true })} // Add validation rule
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.customization ? 'border-red-500' : ''
@@ -121,6 +132,7 @@ const UpdateCraftItem = () => {
             type="text"
             id="processingTime"
             name="processingTime"
+            value={processingTime}
             {...register('processingTime', { required: true })} // Add validation rule
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.processingTime ? 'border-red-500' : ''
@@ -133,6 +145,7 @@ const UpdateCraftItem = () => {
           <select
             id="stockStatus"
             name="stockStatus"
+            value={stockStatus}
             {...register('stockStatus', { required: true })} // Add validation rule
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.stockStatus ? 'border-red-500' : ''

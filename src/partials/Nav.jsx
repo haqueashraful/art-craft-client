@@ -37,7 +37,7 @@ const Nav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/favourites" className="btn-rn">
+              <NavLink to="/allartcraft" className="btn-rn">
                 All art & Craft
               </NavLink>
             </li>
@@ -47,7 +47,7 @@ const Nav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/favourites" className="btn-rn">
+              <NavLink to="/myartcraftlist" className="btn-rn">
                My art & Craft list
               </NavLink>
             </li>
@@ -65,7 +65,7 @@ const Nav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/favourites" className="btn-rn">
+              <NavLink to="/allartcraft" className="btn-rn">
                 All art & Craft
               </NavLink>
             </li>
@@ -75,7 +75,7 @@ const Nav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/favourites" className="btn-rn">
+              <NavLink to="/myartcraftlist" className="btn-rn">
                My art & Craft list
               </NavLink>
             </li>
