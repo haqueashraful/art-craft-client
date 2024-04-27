@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-const AddCraftItem = () => {
+const UpdateCraftItem = () => {
   const {
     register,
     handleSubmit,
@@ -8,26 +8,14 @@ const AddCraftItem = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log('Submitting form data:', data);
-    // Replace with your actual form submission logic
-    fetch("http://localhost:5000/allArtCraft", {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Form submission response:', data);
-      })
-      .catch((error) => {
-        console.error('Form submission error:', error);
-      });
+    console.log('Updating craft item:', data);
+    // Replace with your actual update logic
   };
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Add Craft Item</h1>
-      <form id="craftItemForm" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <h1 className="text-3xl font-bold mb-6">Update Craft Item</h1>
+      <form id="updateCraftItemForm" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="flex flex-col">
           <label htmlFor="imageUrl" className="text-sm font-medium mb-2">Image URL:</label>
           <input
@@ -157,38 +145,12 @@ const AddCraftItem = () => {
             <span className="text-red-500 text-sm">Stock Status is required.</span>
           )}
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="userEmail" className="text-sm font-medium mb-2">User Email:</label>
-          <input
-            type="email"
-            id="userEmail"
-            name="userEmail"
-            {...register('userEmail', { required: true })} // Add validation rule
-            className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
-              errors.userEmail ? 'border-red-500' : ''
-            }`}
-          />
-          {errors.userEmail && <span className="text-red-500 text-sm">User Email is required.</span>}
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="userName" className="text-sm font-medium mb-2">User Name:</label>
-          <input
-            type="text"
-            id="userName"
-            name="userName"
-            {...register('userName', { required: true })} // Add validation rule
-            className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
-              errors.userName ? 'border-red-500' : ''
-            }`}
-          />
-          {errors.userName && <span className="text-red-500 text-sm">User Name is required.</span>}
-        </div>
         <div className="flex justify-center">
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
-            Add
+            Update
           </button>
         </div>
       </form>
@@ -196,4 +158,4 @@ const AddCraftItem = () => {
   );
 };
 
-export default AddCraftItem;
+export default UpdateCraftItem;

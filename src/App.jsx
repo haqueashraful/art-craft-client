@@ -3,10 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import  { Context } from './context/MyContextProvider'
+import MyArtCraftList from './Pages/MyArtCraftList'
+import UpdateCraftItem from './Pages/UpdateCraftItem'
+import Subcategory from './Pages/SubCatagory'
+import AllArtCraftItemsPage from './Pages/AllArtCraftItemsPage'
 
 function App() {
   const [count, setCount] = useState(0)
-  const { name, setName } = useContext(Context)
+  const { name, setName, user } = useContext(Context)
+  console.log(user)
   console.log(count, name)
   return (
     <>
@@ -32,6 +37,13 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <MyArtCraftList />
+
+      <UpdateCraftItem />
+
+      <Subcategory />
+
+      <AllArtCraftItemsPage />
     </>
   )
 }

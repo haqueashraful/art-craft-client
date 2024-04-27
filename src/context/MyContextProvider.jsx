@@ -71,15 +71,16 @@ const MyContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setLoader(true)
+    setLoader(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setStateLoader(false)
+      setStateLoader(false);
+      setLoader(false); // Set loader to false once authentication state is determined
     });
     return () => {
       unsubscribe();
     };
-  }, []); 
+  }, []);
 
   const state = {
     setUser,
