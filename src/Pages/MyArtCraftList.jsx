@@ -41,7 +41,6 @@ const MyArtCraftList = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Form submission response:", data);
         if (data.deletedCount > 0) {
           const remainingCrafts = crafts.filter((craft) => craft._id !== id);
           setCrafts(remainingCrafts);

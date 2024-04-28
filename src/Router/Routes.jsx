@@ -10,11 +10,13 @@ import Home from "../Pages/Home";
 import ViewDetails from "../Pages/ViewDetails";
 import UnderSubCategory from "../Pages/UnderSubCategory";
 import PrivateRoute from "../Components/PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage";
 
 const Routes = createBrowserRouter([
     {
         path: "/",
         element: <Main />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
