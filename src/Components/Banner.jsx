@@ -1,10 +1,22 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css/core';
-import img1 from "../assets/image1.jpg";
-import img2 from "../assets/image2.jpg";
-import img3 from "../assets/image3.jpg";
+import { useEffect, useState } from "react";
 
 const Banner = () => {
+  const [subcategoryItem, setSubcategoryItem] = useState([]);
+
+  useEffect(() => {
+    fetch("https://art-craft-server.vercel.app/subCategory")
+      .then((response) => response.json())
+      .then((data) => {
+        setSubcategoryItem(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching subcategory data:", error);
+      });
+  }, []); // Empty dependency array to run the effect only once on mount
+
   return (
     <div>
       <Splide
@@ -17,15 +29,15 @@ const Banner = () => {
           pauseOnHover: false,
         }}
       >
-        <SplideSlide>
-          <img src={img1} className="object-cover object-center w-full h-full" alt="Image 1" />
-        </SplideSlide>
-        <SplideSlide>
-          <img src={img2} className="object-cover object-center w-full h-full" alt="Image 2" />
-        </SplideSlide>
-        <SplideSlide>
-          <img src={img3} className="object-cover object-center w-full h-full" alt="Image 2" />
-        </SplideSlide>
+        {subcategoryItem.map((item) => (
+          <SplideSlide key={item._id}>
+            <img src={item.imageUrl} className="object-cover object-center w-full h-full" alt={item.subCategoryName} />
+            <div className="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center space-y-5">
+              <h1 className="text-4xl font-bold text-white">{item.subCategoryName}</h1>
+              <p className="text-lg text-white">{item.shortDescription}</p>
+            </div>
+          </SplideSlide>
+        ))}
       </Splide>
     </div>
   );

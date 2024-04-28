@@ -59,7 +59,6 @@ const Home = () => {
 
       <Subcategory />
 
-      <AllArtCraftItemsPage />
     </div>
   );
 };

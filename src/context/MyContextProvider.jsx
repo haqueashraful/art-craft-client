@@ -1,5 +1,15 @@
-import { GithubAuthProvider, GoogleAuthProvider, TwitterAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import  { createContext, useEffect, useState } from "react";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  TwitterAuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import auth from "../Firebase/firebase.config";
 
@@ -10,7 +20,8 @@ const MyContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
   const [stateLoader, setStateLoader] = useState(true);
-  
+  const [storedValue, setStoredValue] = useState();
+  const [isChecked, setIsChecked] = useState(storedValue || false);
 
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
@@ -22,8 +33,7 @@ const MyContextProvider = ({ children }) => {
       displayName: name || user?.displayName,
       photoURL: photo_url || user?.photoURL,
     })
-      .then(() => {
-      })
+      .then(() => {})
       .catch((error) => {
         toast.error("Cannot update profile:", error.message);
       })
@@ -34,27 +44,27 @@ const MyContextProvider = ({ children }) => {
 
   const logInUser = (email, password) => {
     setLoader(true);
-    return signInWithEmailAndPassword(auth, email, password)
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   const registerUser = (email, password) => {
     setLoader(true);
-    return createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signInWithGoogle = () => {
     setLoader(true);
-    return signInWithPopup(auth, googleProvider)
+    return signInWithPopup(auth, googleProvider);
   };
 
   const signInWithGitHub = () => {
     setLoader(true);
-    return signInWithPopup(auth, gitHubProvider)
-  }
+    return signInWithPopup(auth, gitHubProvider);
+  };
   const signInWithTwitter = () => {
     setLoader(true);
-    return signInWithPopup(auth, twitterProvider)
-  }
+    return signInWithPopup(auth, twitterProvider);
+  };
   const logOutUser = () => {
     return signOut(auth)
       .then(() => {
@@ -69,6 +79,25 @@ const MyContextProvider = ({ children }) => {
         setLoader(false);
       });
   };
+
+  const handleChange = () => {
+    setIsChecked(!isChecked);
+    const newTheme = !isChecked ? "light" : "dracula";
+    document.documentElement.setAttribute("data-theme", newTheme);
+  };
+
+  useEffect(() => {
+    setStoredValue(localStorage.getItem("isChecked"));
+    if (storedValue === "true") {
+      setIsChecked(true);
+    } else {
+      setIsChecked(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("isChecked", isChecked);
+  }, [isChecked]);
 
   useEffect(() => {
     setLoader(true);
@@ -94,13 +123,16 @@ const MyContextProvider = ({ children }) => {
     setLoad,
     setLoader,
     setStateLoader,
+    setIsChecked,
+    handleChange,
+    isChecked,
     stateLoader,
     loader,
     user,
-    load
+    load,
   };
 
-    return <Context.Provider value={state}>{children}</Context.Provider>;
+  return <Context.Provider value={state}>{children}</Context.Provider>;
 };
 
 export { MyContextProvider, Context };
