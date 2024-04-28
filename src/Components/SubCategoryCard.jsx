@@ -10,7 +10,7 @@ const SubCategoryCard = ({item}) => {
     };
     
     return (
-        <div onClick={() => handleViewDetails(item.subCategoryName)} className="bg-white rounded-lg shadow-md p-6">
+        <div onClick={() => handleViewDetails(item.subCategoryName)} className=" bg-white rounded-lg shadow-md p-6">
         <img src={item.imageUrl} alt={item.subCategoryName} className="w-full h-48 object-cover mb-4" />
         <h2 className="text-lg font-semibold mb-2">{item.subCategoryName}</h2>
         <p className="text-gray-600 mb-2">Subcategory: {item.shortDescription}</p>

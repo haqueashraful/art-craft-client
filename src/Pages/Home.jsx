@@ -26,7 +26,7 @@ const Home = () => {
     <div>
       <Banner />
 
-      <div>
+      <div className="my-10">
         <div className="flex justify-center items-center">
           <h1 className="text-3xl font-bold mb-6"> Craft items section</h1>
         </div>

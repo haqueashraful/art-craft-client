@@ -43,7 +43,7 @@ const Nav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/favourites" className="btn-rn">
+              <NavLink to="/addcraftitem" className="btn-rn">
                 Add Craft Item
               </NavLink>
             </li>

@@ -5,5 +5,5 @@
 }
 
 .btn-rn{
-    @apply hover:bg-green-400/50 text-black hover:text-white  text-xl border-b-2 border-green-400 md:px-3 md:py-2 py-1 px-2 rounded-lg
+    @apply hover:bg-green-400/50 text-base-content hover:text-white  text-xl border-b-2 border-green-400 md:px-3 md:py-2 py-1 px-2 rounded-lg
 }

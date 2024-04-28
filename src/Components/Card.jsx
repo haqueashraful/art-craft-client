@@ -7,9 +7,9 @@ const Card = ({item}) => {
             navigate(`/viewdetails/${itemId}`);
       };
     return (
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="border border-base-content bg-white rounded-lg shadow-md p-6">
         <img src={item.imageUrl} alt={item.itemName} className="w-full h-48 object-cover mb-4" />
-        <h2 className="text-lg font-semibold mb-2">{item.itemName}</h2>
+        <h2 className="text-lg text-gray-600 font-semibold mb-2">{item.itemName}</h2>
         <p className="text-gray-600 mb-2">Subcategory: {item.subcategoryName}</p>
         <p className="text-gray-600 mb-2">Short Description: {item.shortDescription}</p>
         <p className="text-gray-600 mb-2">Price: ${item.price}</p>

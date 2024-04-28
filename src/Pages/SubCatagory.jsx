@@ -12,7 +12,7 @@ const Subcategory = () => {
   });
 
   return (
-    <div>
+    <div className="my-10">
       <div className="flex justify-center items-center">
         <h1 className="text-3xl font-bold mb-6">
           Art & Craft Categories Section
