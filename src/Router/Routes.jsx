@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import Main from "../Layout/Main";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
@@ -7,6 +6,7 @@ import AddCraftItem from "../Components/AddCraftItem";
 import MyArtCraftList from "../Pages/MyArtCraftList";
 import AllArtCraftItemsPage from "../Pages/AllArtCraftItemsPage";
 import UpdateCraftItem from "../Pages/UpdateCraftItem";
+import Home from "../Pages/Home";
 
 const Routes = createBrowserRouter([
     {
@@ -15,7 +15,7 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <App />
+                element: <Home />
             },
             {
                 path: "/login",
@@ -40,7 +40,7 @@ const Routes = createBrowserRouter([
             {
                 path: '/updateartcraft/:id',
                 element: <UpdateCraftItem />,
-                loader: ({ params }) => fetch(`https://art-craft-server.vercel.app/allArtCraft/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/allArtCraft/id/${params.id}`)
             }
         ]
     }

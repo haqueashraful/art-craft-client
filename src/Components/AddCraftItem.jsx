@@ -20,7 +20,7 @@ const AddCraftItem = () => {
     };
     console.log(formData);
     console.log("Submitting form data:", data);
-    fetch("https://art-craft-server.vercel.app/allArtCraft", {
+    fetch("http://localhost:5000/allArtCraft", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: { "Content-Type": "application/json" },

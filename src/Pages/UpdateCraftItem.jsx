@@ -1,19 +1,51 @@
-import { useForm } from 'react-hook-form';
-import { useLoaderData } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import { useLoaderData } from "react-router-dom";
 
 const UpdateCraftItem = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm(); 
+    setValue,
+    watch,
+  } = useForm();
+
+
+  const watchImageUrl = watch("imageUrl"); 
+  const watchSubcategoryName = watch("subcategoryName"); 
+  const watchShortDescription = watch("shortDescription");
+  const watchPrice = watch("price");
+  const watchRating = watch("rating");
+  const watchCustomization = watch("customization");
+  const watchProcessingTime = watch("processingTime");
+  const watchStockStatus = watch("stockStatus");
+  const watchItemName = watch("itemName");
+
+
 
   const craft = useLoaderData();
-  console.log(craft)
-  const { _id, imageUrl, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus } = craft || {};
+
+  const { _id, imageUrl, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus } = craft;
 
   const onSubmit = (data) => {
-    console.log(_id)
+    console.log(_id);
+    console.log(data)
+    fetch(`http://localhost:5000/allArtCraft/${_id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Form submission response:', data);
+      })
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValue({ ...watch, [name]: value });
   };
 
   return (
@@ -26,8 +58,9 @@ const UpdateCraftItem = () => {
             type="text"
             id="imageUrl"
             name="imageUrl"
-            value={imageUrl}
-            {...register('imageUrl', { required: true })} // Add validation rule
+            value={watchImageUrl || imageUrl}
+            onChange={handleInputChange}
+            {...register('imageUrl', { required: true })} 
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.imageUrl ? 'border-red-500' : ''
             }`}
@@ -40,8 +73,9 @@ const UpdateCraftItem = () => {
             type="text"
             id="itemName"
             name="itemName"
-            value={itemName}
-            {...register('itemName', { required: true })} // Add validation rule
+            value={watchItemName || itemName}
+            onChange={handleInputChange}
+                        {...register('itemName', { required: true })} 
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.itemName ? 'border-red-500' : ''
             }`}
@@ -54,8 +88,9 @@ const UpdateCraftItem = () => {
             type="text"
             id="subcategoryName"
             name="subcategoryName"
-            value={subcategoryName}
-            {...register('subcategoryName', { required: true })} // Add validation rule
+            value={watchSubcategoryName || subcategoryName}
+            onChange={handleInputChange}
+            {...register('subcategoryName', { required: true })} 
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.subcategoryName ? 'border-red-500' : ''
             }`}
@@ -70,8 +105,9 @@ const UpdateCraftItem = () => {
             id="shortDescription"
             name="shortDescription"
             rows="4"
-            value={shortDescription}
-            {...register('shortDescription', { required: true })} // Add validation rule
+            value={watchShortDescription || shortDescription}
+            onChange={handleInputChange}
+            {...register('shortDescription', { required: true })} 
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.shortDescription ? 'border-red-500' : ''
             }`}
@@ -86,8 +122,9 @@ const UpdateCraftItem = () => {
             type="number"
             id="price"
             name="price"
-            value={price}
-            {...register('price', { required: true })} // Add validation rule
+            value={watchPrice || price}
+            onChange={handleInputChange}
+            {...register('price', { required: true })} 
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.price ? 'border-red-500' : ''
             }`}
@@ -100,8 +137,9 @@ const UpdateCraftItem = () => {
             type="number"
             id="rating"
             name="rating"
-            value={rating}
-            {...register('rating', { required: true })} // Add validation rule
+            value={watchRating || rating}
+            onChange={handleInputChange}
+            {...register('rating', { required: true })} 
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.rating ? 'border-red-500' : ''
             }`}
@@ -113,8 +151,9 @@ const UpdateCraftItem = () => {
           <select
             id="customization"
             name="customization"
-            value={customization}
-            {...register('customization', { required: true })} // Add validation rule
+            value={watchCustomization || customization}
+            onChange={handleInputChange}
+            {...register('customization', { required: true })} 
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.customization ? 'border-red-500' : ''
             }`}
@@ -132,8 +171,9 @@ const UpdateCraftItem = () => {
             type="text"
             id="processingTime"
             name="processingTime"
-            value={processingTime}
-            {...register('processingTime', { required: true })} // Add validation rule
+            value={watchProcessingTime || processingTime}
+            onChange={handleInputChange}
+            {...register('processingTime', { required: true })} 
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.processingTime ? 'border-red-500' : ''
             }`}
@@ -145,8 +185,9 @@ const UpdateCraftItem = () => {
           <select
             id="stockStatus"
             name="stockStatus"
-            value={stockStatus}
-            {...register('stockStatus', { required: true })} // Add validation rule
+            value={watchStockStatus || stockStatus}
+            onChange={handleInputChange}
+            {...register('stockStatus', { required: true })} 
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.stockStatus ? 'border-red-500' : ''
             }`}

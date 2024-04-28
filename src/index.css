@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add this CSS to your stylesheet */
+.splide__arrows {
+    display: none;
+  }
+  
