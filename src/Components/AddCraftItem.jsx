@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Context } from "../context/MyContextProvider";
+import { toast } from "react-toastify";
 
 const AddCraftItem = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const { user } = useContext(Context);
@@ -27,7 +29,8 @@ const AddCraftItem = () => {
     })
       .then((response) => response.json())
       .then((formData) => {
-        console.log("Form submission response:", formData);
+        toast.success("Form submission response:", formData);
+        reset();
       })
       .catch((error) => {
         console.error("Form submission error:", error);

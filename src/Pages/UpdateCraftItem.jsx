@@ -1,13 +1,16 @@
 import { useForm } from "react-hook-form";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateCraftItem = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
     watch,
+    reset,
   } = useForm();
 
   const watchImageUrl = watch("imageUrl");
@@ -46,7 +49,9 @@ const UpdateCraftItem = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Form submission response:", data);
+        toast.success("Form submission response:", data);
+        reset()
+        navigate("/myartcraftlist");
       });
   };
 

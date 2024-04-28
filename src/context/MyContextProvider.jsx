@@ -104,7 +104,7 @@ const MyContextProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setStateLoader(false);
-      setLoader(false); // Set loader to false once authentication state is determined
+      setLoader(false);
     });
     return () => {
       unsubscribe();

@@ -15,10 +15,10 @@ const Banner = () => {
       .catch((error) => {
         console.error("Error fetching subcategory data:", error);
       });
-  }, []); // Empty dependency array to run the effect only once on mount
+  }, []); 
 
   return (
-    <div>
+    <div className="my-10">
       <Splide
         options={{
           type: "fade", 

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../context/MyContextProvider";
 import Loading from "../Components/Loading";
+import swal from "sweetalert";
 
 const MyArtCraftList = () => {
   const [crafts, setCrafts] = useState([]);
@@ -25,7 +26,16 @@ const MyArtCraftList = () => {
   }, [user]); // Dependency array added to ensure useEffect runs only once
 
   const handleDelete = (id) => {
-    console.log(id)
+
+    swal({
+      title: "Are you sure?",
+      text: "Are you sure that you want to leave this page?",
+      icon: "warning",
+      dangerMode: true,
+    })
+    .then(willDelete => {
+      if (willDelete) {
+        
     fetch(`https://art-craft-server.vercel.app/allArtCraft/${id}`, {
       method: "DELETE",
     })
@@ -40,6 +50,10 @@ const MyArtCraftList = () => {
       .catch((error) => {
         console.error("Error submitting data:", error);
       });
+        swal("Deleted!", "Your imaginary file has been deleted!", "success");
+      }
+    });
+
   }
   if (loader) {
     return <Loading />;

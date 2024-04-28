@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Banner from "../Components/Banner";
 import Subcategory from "./SubCatagory";
-import AllArtCraftItemsPage from "./AllArtCraftItemsPage";
 import Card from "../Components/Card";
 
 const Home = () => {
@@ -17,12 +16,10 @@ const Home = () => {
       });
   }, []);
 
-  // Get current items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
