@@ -7,6 +7,9 @@ import MyArtCraftList from "../Pages/MyArtCraftList";
 import AllArtCraftItemsPage from "../Pages/AllArtCraftItemsPage";
 import UpdateCraftItem from "../Pages/UpdateCraftItem";
 import Home from "../Pages/Home";
+import ViewDetails from "../Pages/ViewDetails";
+import UnderSubCategory from "../Pages/UnderSubCategory";
+import PrivateRoute from "../Components/PrivateRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -27,11 +30,11 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/addcraftitem',
-                element: <AddCraftItem />
+                element: <PrivateRoute><AddCraftItem /></PrivateRoute>
             },
             {
                 path: '/myartcraftlist',
-                element: <MyArtCraftList />
+                element: <PrivateRoute><MyArtCraftList /></PrivateRoute>
             },
             {
                 path: '/allartcraft',
@@ -40,7 +43,17 @@ const Routes = createBrowserRouter([
             {
                 path: '/updateartcraft/:id',
                 element: <UpdateCraftItem />,
-                loader: ({ params }) => fetch(`http://localhost:5000/allArtCraft/id/${params.id}`)
+                loader: ({ params }) => fetch(`https://art-craft-server.vercel.app/allArtCraft/id/${params.id}`)
+            },
+            {
+                path: '/viewdetails/:id',
+                element: <PrivateRoute><ViewDetails /></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://art-craft-server.vercel.app/allArtCraft/id/${params.id}`)
+            },
+            {
+                path: 'categorywise/:category',
+                element: <UnderSubCategory />,
+                loader: ({ params }) => fetch(`https://art-craft-server.vercel.app/allArtCraft/subcategoryName/${params.category}`)
             }
         ]
     }

@@ -1,12 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../context/MyContextProvider";
 import Loading from "../Components/Loading";
+import { Context } from "../context/MyContextProvider";
 const AllArtCraftItemsPage = () => {
   const [items, setItems] = useState([]);
   const {  loader } = useContext(Context);
   useEffect(() => {
-      fetch('http://localhost:5000/allArtCraft')
+      fetch('https://art-craft-server.vercel.app/allArtCraft')
         .then((response) => response.json())
         .then((data) => {
           setItems(data);
@@ -27,6 +27,9 @@ const AllArtCraftItemsPage = () => {
         <thead className="bg-gray-50">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Image
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Item Name
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -44,6 +47,9 @@ const AllArtCraftItemsPage = () => {
         <tbody className="bg-white divide-y divide-gray-200">
           {items.map((item) => (
             <tr key={item._id}>
+              <td className="px-6 py-4 whitespace-nowrap overflow-hidden">
+                <img className="w-40 h-24" src={item.imageUrl} alt="" />
+              </td>
               <td className="px-6 py-4 whitespace-nowrap">{item.itemName}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 {item.subcategoryName}
@@ -54,7 +60,7 @@ const AllArtCraftItemsPage = () => {
               <td className="px-6 py-4 whitespace-nowrap">{item.userEmail}</td>
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <Link
-                  to={`/view-details/${item._id}`}
+                  to={`/viewdetails/${item._id}`}
                   className="text-indigo-600 hover:text-indigo-900"
                 >
                   View Details

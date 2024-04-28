@@ -9,9 +9,9 @@ const MyArtCraftList = () => {
   const { user, loader } = useContext(Context);
 
   useEffect(() => {
-    if(user?.email){
+    if (user?.email) {
       fetch(
-        `http://localhost:5000/allArtCraft/userEmail/${user.email}`
+        `https://art-craft-server.vercel.app/allArtCraft/userEmail/${user.email}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -23,6 +23,24 @@ const MyArtCraftList = () => {
         });
     }
   }, [user]); // Dependency array added to ensure useEffect runs only once
+
+  const handleDelete = (id) => {
+    console.log(id)
+    fetch(`https://art-craft-server.vercel.app/allArtCraft/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Form submission response:", data);
+        if (data.deletedCount > 0) {
+          const remainingCrafts = crafts.filter((craft) => craft._id !== id);
+          setCrafts(remainingCrafts);
+        }
+      })
+      .catch((error) => {
+        console.error("Error submitting data:", error);
+      });
+  }
   if (loader) {
     return <Loading />;
   }
@@ -46,14 +64,22 @@ const MyArtCraftList = () => {
             <p className="text-gray-600 mb-2">
               Stock Status: {craft.stockStatus}
             </p>
-            <button
-              onClick={() => {
-                navigate(`/updateartcraft/${craft._id}`);
-              }}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Update
-            </button>
+            <div className="flex justify-between items-center">
+              <button
+                onClick={() => {
+                  navigate(`/updateartcraft/${craft._id}`);
+                }}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Update
+              </button>
+              <button
+                onClick={() => {handleDelete(craft._id)}}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ))}
       </div>

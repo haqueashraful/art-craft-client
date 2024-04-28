@@ -20,7 +20,7 @@ const AddCraftItem = () => {
     };
     console.log(formData);
     console.log("Submitting form data:", data);
-    fetch("http://localhost:5000/allArtCraft", {
+    fetch("https://art-craft-server.vercel.app/allArtCraft", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: { "Content-Type": "application/json" },
@@ -42,7 +42,7 @@ const AddCraftItem = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           
         <div className="flex flex-col">
           <label htmlFor="imageUrl" className="text-sm font-medium mb-2">
@@ -91,12 +91,12 @@ const AddCraftItem = () => {
             }`}
           >
             <option value="">Select Subcategory</option>
-            <option value="Landscape Painting">Landscape Painting</option>
-            <option value="Portrait Drawing">Portrait Drawing</option>
-            <option value="Watercolour Painting">Watercolour Painting</option>
-            <option value="Oil Painting">Oil Painting</option>
-            <option value="Charcoal Sketching">Charcoal Sketching</option>
-            <option value="Cartoon Drawing">Cartoon Drawing</option>
+            <option value="landscape_painting">Landscape Painting</option>
+            <option value="portrait_drawing">Portrait Drawing</option>
+            <option value="watercolour_painting">Watercolour Painting</option>
+            <option value="oil_painting">Oil Painting</option>
+            <option value="charcoal_sketching">Charcoal Sketching</option>
+            <option value="cartoon_drawing">Cartoon Drawing</option>
           </select>
           {errors.subcategoryName && (
             <span className="text-red-500 text-sm">
