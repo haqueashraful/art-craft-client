@@ -35,7 +35,7 @@ const Home = () => {
             <span style={{ color: "red", fontWeight: "bold" }}>
               <Typewriter
                 words={[" Craft items section"]}
-                loop={5}
+                loop={100}
                 cursor
                 cursorStyle="_"
                 typeSpeed={70}

@@ -38,11 +38,11 @@ const Banner = () => {
               className="object-cover object-center w-full h-full"
               alt={item.subCategoryName}
             />
-            <div className="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center space-y-5">
-              <h1 className="text-4xl font-bold text-white">
+            <div className="w-full absolute bg-[#1A103D]/50 py-5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center space-y-5">
+              <h1 className="text-4xl lg:text-6xl font-bold text-white">
                 {item.subCategoryName}
               </h1>
-              <p className="text-lg text-white">{item.shortDescription}</p>
+              <p className="text-lg lg:text-xl text-white">{item.shortDescription}</p>
             </div>
           </SplideSlide>
         ))}

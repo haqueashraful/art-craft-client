@@ -44,7 +44,7 @@ const AddCraftItem = () => {
         <span style={{ color: "red", fontWeight: "bold" }}>
           <Typewriter
             words={[" Add Craft Item"]}
-            loop={5}
+            loop={100}
             cursor
             cursorStyle="_"
             typeSpeed={70}

@@ -26,8 +26,8 @@ const Footer = () => {
           <p>
           <span className="text-4xl" style={{ color: "red", fontWeight: "bold" }}>
           <Typewriter
-            words={[" Add & Craft"]}
-            loop={5}
+            words={["ArtCraft Store"]}
+            loop={100}
             cursor
             cursorStyle="_"
             typeSpeed={70}

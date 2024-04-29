@@ -25,7 +25,7 @@ const Joinsection = () => {
               <span style={{ color: "red", fontWeight: "bold" }}>
           <Typewriter
             words={["Crafts according to your needs"]}
-            loop={5}
+            loop={100}
             cursor
             cursorStyle="_"
             typeSpeed={70}

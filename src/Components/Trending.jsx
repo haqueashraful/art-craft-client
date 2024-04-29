@@ -30,7 +30,7 @@ const Trending = () => {
         <span style={{ color: "red", fontWeight: "bold", fontSize: "40px" }}>
           <Typewriter
             words={["Trending Now"]}
-            loop={5}
+            loop={100}
             cursor
             cursorStyle="_"
             typeSpeed={70}

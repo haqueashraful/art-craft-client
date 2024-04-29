@@ -1,8 +1,18 @@
-# React + Vite
+# ArtCraft Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to ArtCraft Store, your go-to destination for exquisite landscape paintings!
 
-Currently, two official plugins are available:
+Check out our website: [ArtCraft Store](https://assignment-ten-ha.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- **Diverse Collection:** Explore a wide range of stunning landscape paintings.
+- **Breathtaking Scenes:** Discover scenes from majestic mountains to serene forests.
+- **Talented Artists:** Each painting is meticulously crafted by skilled artists.
+- **Customization Options:** Customize your order with size and framing options.
+- **Worldwide Shipping:** Enjoy fast and secure shipping to your doorstep.
+
+## Extra Plugin Exploring 
+- **React-simple-typeWriter**
+- **React-Tooltip**
+

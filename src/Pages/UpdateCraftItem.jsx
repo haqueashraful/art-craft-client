@@ -68,7 +68,7 @@ const UpdateCraftItem = () => {
         <span style={{ color: "red", fontWeight: "bold" }}>
           <Typewriter
             words={["Update Craft Item"]}
-            loop={5}
+            loop={100}
             cursor
             cursorStyle="_"
             typeSpeed={70}

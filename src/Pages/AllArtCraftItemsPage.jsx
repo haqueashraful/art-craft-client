@@ -44,7 +44,7 @@ const AllArtCraftItemsPage = () => {
         <span style={{ color: "red", fontWeight: "bold" }}>
           <Typewriter
             words={["All Art & Craft Items"]}
-            loop={5}
+            loop={100}
             cursor
             cursorStyle="_"
             typeSpeed={70}

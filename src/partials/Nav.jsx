@@ -56,7 +56,7 @@ const Nav = () => {
           </ul>
         </div>
         <Link to="/" className="btn-rn text-xl">
-          Art & Craft
+        ArtCraft Store
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

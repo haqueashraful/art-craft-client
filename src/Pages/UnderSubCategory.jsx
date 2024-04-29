@@ -22,7 +22,7 @@ const UnderSubCategory = () => {
             <span style={{ color: "red", fontWeight: "bold" }}>
           <Typewriter
             words={[categoryName]}
-            loop={5}
+            loop={100}
             cursor
             cursorStyle="_"
             typeSpeed={70}
