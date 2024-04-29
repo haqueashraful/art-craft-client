@@ -4,6 +4,7 @@ import Subcategory from "./SubCatagory";
 import Card from "../Components/Card";
 import Joinsection from "../Components/Joinsection";
 import { Typewriter } from "react-simple-typewriter";
+import Trending from "../Components/Trending";
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -70,6 +71,7 @@ const Home = () => {
 
       <Subcategory />
       <Joinsection />
+      <Trending />
     </div>
   );
 };

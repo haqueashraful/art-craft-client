@@ -4,13 +4,13 @@ import { Helmet } from "react-helmet-async";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Context } from "../context/MyContextProvider";
 import Loading from "../Components/Loading";
+import { FaStar } from "react-icons/fa6";
 
 const ViewDetails = () => {
   const { loader } = useContext(Context);
   const [isFavorite, setIsFavorite] = useState(false);
   const data = useLoaderData();
   const { id } = useParams();
-
 
   const {
     _id,
@@ -25,12 +25,13 @@ const ViewDetails = () => {
     stockStatus,
   } = data;
 
-
   const handleToggleFavorite = () => {
     const favoriteEstates = JSON.parse(localStorage.getItem("favorite")) || [];
 
     if (isFavorite) {
-      const updatedFavorites = favoriteEstates.filter((estate) => estate.id !== data.id);
+      const updatedFavorites = favoriteEstates.filter(
+        (estate) => estate.id !== data.id
+      );
       localStorage.setItem("favorite", JSON.stringify(updatedFavorites));
     } else {
       const updatedFavorites = [...favoriteEstates, data];
@@ -66,12 +67,17 @@ const ViewDetails = () => {
         <p>{subcategoryName}</p>
       </div>
       <div className="mb-4">
-        <img src={imageUrl} alt={itemName} className="w-full h-[400px] rounded-lg" />
+        <img
+          src={imageUrl}
+          alt={itemName}
+          className="w-full h-[400px] rounded-lg"
+        />
       </div>
       <div className="bg-white p-4 rounded-lg shadow-md">
+        <h1 className="text-lg font-bold mb-2">{itemName}</h1>
         <p className="text-gray-700 mb-2">{shortDescription}</p>
-            <p>{customization}</p>
-            <p>{rating}</p>
+        <p>{customization}</p>
+        <p>{rating} <FaStar className="inline-block text-yellow-500"></FaStar></p>
         <div className="flex items-center gap-3 text-gray-500 mb-2">
           <span>{`${price} per month`}</span>
           <span>{`${processingTime} `}</span>
