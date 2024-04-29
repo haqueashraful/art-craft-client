@@ -10,7 +10,7 @@ import { Context } from "../context/MyContextProvider";
 
 const MyArtCraftList = () => {
   const [crafts, setCrafts] = useState([]);
-  const [filter, setFilter] = useState("all"); // Default filter value is "all"
+  const [filter, setFilter] = useState("all"); 
   const navigate = useNavigate();
   const { user, loader } = useContext(Context);
 
@@ -27,8 +27,7 @@ const MyArtCraftList = () => {
           console.error("Error fetching data:", error);
         });
     }
-  }, [user]); // Dependency array added to ensure useEffect runs only once
-
+  }, [user]); 
   const handleDelete = (id) => {
     swal({
       title: "Are you sure?",
@@ -83,9 +82,9 @@ const MyArtCraftList = () => {
           </h1>
         </div>
         <div className="flex justify-center items-center gap-2">
-          <span>Filter:</span>
+          <span className=" text-xl">Filter:</span>
           <select
-            className="select select-primary w-full max-w-xs"
+            className="select select-primary w-full"
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
           >
