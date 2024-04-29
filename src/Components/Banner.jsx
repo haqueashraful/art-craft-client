@@ -25,7 +25,7 @@ const Banner = () => {
           rewind: true,
           height: 500,
           autoplay: true, 
-          interval: 1000,
+          interval: 2000,
           pauseOnHover: true,
           play: true,
         }}

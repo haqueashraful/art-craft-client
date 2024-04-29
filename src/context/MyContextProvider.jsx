@@ -21,7 +21,7 @@ const MyContextProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
   const [stateLoader, setStateLoader] = useState(true);
   const [storedValue, setStoredValue] = useState();
-  const [isChecked, setIsChecked] = useState(storedValue || false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
@@ -82,7 +82,7 @@ const MyContextProvider = ({ children }) => {
 
   const handleChange = () => {
     setIsChecked(!isChecked);
-    const newTheme = !isChecked ? "light" : "dracula";
+    const newTheme = !isChecked ? "dracula" : "light";
     document.documentElement.setAttribute("data-theme", newTheme);
   };
 
