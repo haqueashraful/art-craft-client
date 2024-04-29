@@ -1,7 +1,9 @@
+import { Typewriter } from "react-simple-typewriter";
+
 const Footer = () => {
   return (
-    <div className="px-5 lg:px-20">
-      <footer className="footer p-10 bg-neutral text-neutral-content">
+    <div className="">
+      <footer className="footer px-5 lg:px-20 p-10 bg-neutral flex justify-between items-center text-neutral-content">
         <aside>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,9 +24,19 @@ const Footer = () => {
             <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
           </svg>
           <p>
-            ACME Industries Ltd.
+          <span className="text-4xl" style={{ color: "red", fontWeight: "bold" }}>
+          <Typewriter
+            words={[" Add & Craft"]}
+            loop={5}
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </span>
             <br />
-            Providing reliable tech since 1992
+            &copy; 2022 - All right reserved
           </p>
         </aside>
         <nav>

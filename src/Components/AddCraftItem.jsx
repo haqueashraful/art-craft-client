@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Context } from "../context/MyContextProvider";
 import { toast } from "react-toastify";
+import { Typewriter } from "react-simple-typewriter";
 
 const AddCraftItem = () => {
   const {
@@ -39,75 +40,93 @@ const AddCraftItem = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Add Craft Item</h1>
+      <h1 className="text-3xl font-bold mb-6">
+        <span style={{ color: "red", fontWeight: "bold" }}>
+          <Typewriter
+            words={[" Add Craft Item"]}
+            loop={5}
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </span>
+      </h1>
       <form
         id="craftItemForm"
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          
-        <div className="flex flex-col">
-          <label htmlFor="imageUrl" className="text-sm font-medium mb-2">
-            Image URL:
-          </label>
-          <input
-            type="text"
-            id="imageUrl"
-            name="imageUrl"
-            {...register("imageUrl", { required: true })}
-            className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
-              errors.imageUrl ? "border-red-500" : ""
-            }`}
-          />
-          {errors.imageUrl && (
-            <span className="text-red-500 text-sm">Image URL is required.</span>
-          )}
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="itemName" className="text-sm font-medium mb-2">
-            Item Name:
-          </label>
-          <input
-            type="text"
-            id="itemName"
-            name="itemName"
-            {...register("itemName", { required: true })}
-            className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
-              errors.itemName ? "border-red-500" : ""
-            }`}
-          />
-          {errors.itemName && (
-            <span className="text-red-500 text-sm">Item Name is required.</span>
-          )}
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="subcategoryName" className="text-sm font-medium mb-2">
-            Subcategory Name:
-          </label>
-          <select
-            id="subcategoryName"
-            name="subcategoryName"
-            {...register("subcategoryName", { required: true })}
-            className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
-              errors.subcategoryName ? "border-red-500" : ""
-            }`}
-          >
-            <option value="">Select Subcategory</option>
-            <option value="landscape_painting">Landscape Painting</option>
-            <option value="portrait_drawing">Portrait Drawing</option>
-            <option value="watercolour_painting">Watercolour Painting</option>
-            <option value="oil_painting">Oil Painting</option>
-            <option value="charcoal_sketching">Charcoal Sketching</option>
-            <option value="cartoon_drawing">Cartoon Drawing</option>
-          </select>
-          {errors.subcategoryName && (
-            <span className="text-red-500 text-sm">
-              Subcategory Name is required.
-            </span>
-          )}
-        </div>
-        <div className="flex flex-col">
+          <div className="flex flex-col">
+            <label htmlFor="imageUrl" className="text-sm font-medium mb-2">
+              Image URL:
+            </label>
+            <input
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              {...register("imageUrl", { required: true })}
+              className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
+                errors.imageUrl ? "border-red-500" : ""
+              }`}
+            />
+            {errors.imageUrl && (
+              <span className="text-red-500 text-sm">
+                Image URL is required.
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="itemName" className="text-sm font-medium mb-2">
+              Item Name:
+            </label>
+            <input
+              type="text"
+              id="itemName"
+              name="itemName"
+              {...register("itemName", { required: true })}
+              className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
+                errors.itemName ? "border-red-500" : ""
+              }`}
+            />
+            {errors.itemName && (
+              <span className="text-red-500 text-sm">
+                Item Name is required.
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label
+              htmlFor="subcategoryName"
+              className="text-sm font-medium mb-2"
+            >
+              Subcategory Name:
+            </label>
+            <select
+              id="subcategoryName"
+              name="subcategoryName"
+              {...register("subcategoryName", { required: true })}
+              className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
+                errors.subcategoryName ? "border-red-500" : ""
+              }`}
+            >
+              <option value="">Select Subcategory</option>
+              <option value="landscape_painting">Landscape Painting</option>
+              <option value="portrait_drawing">Portrait Drawing</option>
+              <option value="watercolour_painting">Watercolour Painting</option>
+              <option value="oil_painting">Oil Painting</option>
+              <option value="charcoal_sketching">Charcoal Sketching</option>
+              <option value="cartoon_drawing">Cartoon Drawing</option>
+            </select>
+            {errors.subcategoryName && (
+              <span className="text-red-500 text-sm">
+                Subcategory Name is required.
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col">
             <label htmlFor="stockStatus" className="text-sm font-medium mb-2">
               Stock Status:
             </label>
@@ -215,7 +234,7 @@ const AddCraftItem = () => {
               Processing Time:
             </label>
             <input
-              type="text"
+              type="number"
               id="processingTime"
               name="processingTime"
               {...register("processingTime", { required: true })}

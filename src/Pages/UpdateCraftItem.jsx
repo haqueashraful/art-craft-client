@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 import { toast } from "react-toastify";
 
 const UpdateCraftItem = () => {
@@ -24,7 +25,7 @@ const UpdateCraftItem = () => {
   const watchItemName = watch("itemName");
 
   const craft = useLoaderData();
-  console.log(craft)
+  console.log(craft);
 
   const {
     _id,
@@ -50,7 +51,7 @@ const UpdateCraftItem = () => {
       .then((response) => response.json())
       .then((data) => {
         toast.success("Form submission response:", data);
-        reset()
+        reset();
         navigate("/myartcraftlist");
       });
   };
@@ -62,7 +63,20 @@ const UpdateCraftItem = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Update Craft Item</h1>
+      <h1 className="text-3xl font-bold mb-6">
+        {" "}
+        <span style={{ color: "red", fontWeight: "bold" }}>
+          <Typewriter
+            words={["Update Craft Item"]}
+            loop={5}
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </span>
+      </h1>
       <form
         id="updateCraftItemForm"
         onSubmit={handleSubmit(onSubmit)}

@@ -1,12 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Nav.css";
 import { Context } from "../context/MyContextProvider";
+import { Tooltip } from "react-tooltip";
 
 const Nav = () => {
-  const { user, logOutUser, loader,isChecked, setIsChecked, handleChange } = useContext(Context);
+  const { user, logOutUser, loader, isChecked, setIsChecked, handleChange } =
+    useContext(Context);
   console.log(loader);
-
 
   return (
     <div className="navbar bg-base-100 mt-5 lg:px-20 px-5">
@@ -114,16 +115,19 @@ const Nav = () => {
           <>
             <>
               <div className="dropdown">
+                <Tooltip id="userTooltip" effect="solid" />
                 <div
+                  data-tooltip-id="userTooltip"
                   tabIndex={0}
                   role="button"
-                  className="btn btn-ghost md:hidden avatar md:tooltip"
-                  data-tip={user?.displayName}
+                  className="btn btn-ghost md:hidden avatar"
+                  data-tooltip-content={user?.displayName}
                 >
                   <div className="w-6 md:w-10 rounded-full ring ring-green-500 ring-offset-base-100 ring-offset-2">
                     <img
                       className="w-6 h-6 md:w-10 md:h-10"
                       src={user.photoURL}
+                      alt="User Avatar"
                     />
                   </div>
                 </div>
@@ -137,7 +141,11 @@ const Nav = () => {
                 </ul>
               </div>
               <div className="hidden md:flex justify-center items-center gap-5">
-                <div className="avatar md:tooltip" data-tip={user?.displayName}>
+                <div
+                  data-tooltip-id="userTooltip"
+                  data-tooltip-content={user?.displayName}
+                  className="avatar"
+                >
                   <div className=" w-6 md:w-10 rounded-full ring ring-green-500 ring-offset-base-100 ring-offset-2">
                     <img
                       className="w-6 h-6 md:w-10 md:h-10"
@@ -145,6 +153,7 @@ const Nav = () => {
                     />
                   </div>
                 </div>
+                <Tooltip id="userTooltip" effect="solid" />
                 <button onClick={logOutUser} className="btn-rn ">
                   SignOut
                 </button>
