@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../context/MyContextProvider";
 import Loading from "../Components/Loading";
 import swal from "sweetalert";
 import { FaStar } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import { RiEdit2Fill } from "react-icons/ri";
 import { Typewriter } from "react-simple-typewriter";
+import { Context } from "../context/MyContextProvider";
 
 const MyArtCraftList = () => {
   const [crafts, setCrafts] = useState([]);
+  const [filter, setFilter] = useState("all"); // Default filter value is "all"
   const navigate = useNavigate();
   const { user, loader } = useContext(Context);
 
@@ -55,27 +56,47 @@ const MyArtCraftList = () => {
       }
     });
   };
+
   if (loader) {
     return <Loading />;
   }
+
+  const filteredCrafts = filter === "all" ? crafts : crafts.filter(craft => craft.customization === filter);
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">
-        {" "}
-        <span style={{ color: "red", fontWeight: "bold" }}>
-          <Typewriter
-            words={["My Art & Craft List"]}
-            loop={5}
-            cursor
-            cursorStyle="_"
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={1000}
-          />
-        </span>
-      </h1>
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold mb-6">
+            {" "}
+            <span style={{ color: "red", fontWeight: "bold" }}>
+              <Typewriter
+                words={["My Art & Craft List"]}
+                loop={5}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </span>
+          </h1>
+        </div>
+        <div className="flex justify-center items-center gap-2">
+          <span>Filter:</span>
+          <select
+            className="select select-primary w-full max-w-xs"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
+            <option value="all">All</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {crafts.map((craft) => (
+        {filteredCrafts.map((craft) => (
           <div key={craft._id} className="bg-white rounded-lg shadow-md p-6">
             <img
               src={craft.imageUrl}
