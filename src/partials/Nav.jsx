@@ -5,9 +5,8 @@ import { Context } from "../context/MyContextProvider";
 import { Tooltip } from "react-tooltip";
 
 const Nav = () => {
-  const { user, logOutUser, loader, isChecked, setIsChecked, handleChange } =
+  const { user, logOutUser, handleChange } =
     useContext(Context);
-  console.log(loader);
 
   return (
     <div className="navbar bg-base-100 mt-5 lg:px-20 px-5">

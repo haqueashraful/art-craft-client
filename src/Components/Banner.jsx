@@ -10,7 +10,6 @@ const Banner = () => {
       .then((response) => response.json())
       .then((data) => {
         setSubcategoryItem(data);
-        console.log(data)
       })
       .catch((error) => {
         console.error("Error fetching subcategory data:", error);

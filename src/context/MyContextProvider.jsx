@@ -12,6 +12,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import auth from "../Firebase/firebase.config";
+import PropType from "prop-types";
 
 const Context = createContext({});
 
@@ -133,6 +134,10 @@ const MyContextProvider = ({ children }) => {
   };
 
   return <Context.Provider value={state}>{children}</Context.Provider>;
+};
+
+MyContextProvider.propTypes = {
+  children: PropType.node.isRequired,
 };
 
 export { MyContextProvider, Context };
