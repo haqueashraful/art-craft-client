@@ -14,25 +14,20 @@ const Joinsection = () => {
         }}
       >
         <div className="flex md:flex-row flex-col gap-5 justify-center  lg:mx-36 md:mx-5 mx-2">
-          <div
-            className="md:w-8/12 w-full p-4 rounded"
-            style={{
-              backgroundImage: `url(${img1})`,
-            }}
-          >
+          <div className="md:w-8/12 bg-black/30 w-full p-4 rounded">
             <div className="bg-[#f2ecec62] flex flex-col justify-center  items-center p-4 border rounded h-full backdrop-blur-sm">
               <h1 className="text-center md:text-4xl text-white font-semibold">
-              <span style={{ color: "red", fontWeight: "bold" }}>
-          <Typewriter
-            words={["Crafts according to your needs"]}
-            loop={100}
-            cursor
-            cursorStyle="_"
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={1000}
-          />
-        </span>
+                <span style={{ color: "white", fontWeight: "bold" }}>
+                  <Typewriter
+                    words={["Crafts according to your needs"]}
+                    loop={100}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1000}
+                  />
+                </span>
               </h1>
               <p className="text-center text-white text-xl mt-3">
                 "We promise to deliver quality & creativity" communicates a
@@ -42,14 +37,12 @@ const Joinsection = () => {
             </div>
           </div>
           <div
-            className="md:w-1/3 w-full rounded p-5 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(${img2})`,
-            }}
+            className="md:w-1/3 bg-gray-600/50 w-full rounded p-5 bg-cover bg-center bg-no-repeat"
+         
           >
             <div className="p-5 border space-y-4 rounded bg-[#ffffff5e]">
-              <h1 className="text-3xl font-semibold text-center">Subscribe</h1>
-              <p className="text-gray-900">
+              <h1 className="text-3xl text-white  font-bold text-center">Subscribe</h1>
+              <p className="text-gray-50">
                 Register to our newsletter & get 20% OFF for your first order
               </p>
               <div className="flex items-center">
@@ -63,7 +56,6 @@ const Joinsection = () => {
             </div>
           </div>
         </div>
-                
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
+import { NavLink } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 const Footer = () => {
   return (
     <div className="">
-      <footer className="footer px-5 lg:px-20 p-10 bg-neutral flex justify-between items-center text-neutral-content">
+      <footer className="footer px-5 lg:px-20 p-10 bg-black text-white flex justify-between items-center">
         <aside>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +25,7 @@ const Footer = () => {
             <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
           </svg>
           <p>
-          <span className="text-4xl" style={{ color: "red", fontWeight: "bold" }}>
+          <span className="text-4xl" style={{ color: "white", fontWeight: "bold" }}>
           <Typewriter
             words={["ArtCraft Store"]}
             loop={100}
@@ -35,7 +36,10 @@ const Footer = () => {
             delaySpeed={1000}
           />
         </span>
-            <br />
+           
+          </p>
+          <br />
+          <p className="">
             &copy; 2022 - All right reserved
           </p>
         </aside>

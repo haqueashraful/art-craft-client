@@ -65,7 +65,7 @@ const MyArtCraftList = () => {
         <h1 className="text-3xl font-bold text-center py-10 mb-6">
           <span style={{ color: "red", fontWeight: "bold" }}>
             <Typewriter
-              words={["No Art & Craft Found"]}
+              words={["You don't Add any Art & Craft"]}
               loop={100}
               cursor
               cursorStyle="_"

@@ -4,7 +4,7 @@ import Footer from "../partials/Footer";
 
 const Main = () => {
     return (
-        <div>
+        <div className="flex flex-col justify-between min-h-screen">
             <Nav />
            <div className="mx-2 lg:mx-20">
            <Outlet />

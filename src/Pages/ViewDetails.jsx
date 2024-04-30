@@ -10,10 +10,9 @@ const ViewDetails = () => {
   const { loader } = useContext(Context);
   const [isFavorite, setIsFavorite] = useState(false);
   const data = useLoaderData();
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const {
-    _id,
     imageUrl,
     itemName,
     subcategoryName,
@@ -83,7 +82,8 @@ const category = subcategoryName.split("_").map(capitalizeFirstLetter).join(" ")
           </div>
         </div>
         <div className=" h-full p-4 rounded-lg shadow-md w-full space-y-4 flex flex-col justify-center items-start">
-          <h1 className="text-lg font-bold mb-2"><span className="text-black font-bold text-xl">Item Name:</span> {itemName}</h1>
+          <h1 className="text-3xl font-bold mb-2"> {itemName}</h1>
+          <p className="text-lg"><span className="text-black font-bold text-xl">Category:</span> {category}</p>
           <p className="text-gray-500 mb-2 text-lg">{shortDescription}</p>
           <p className="text-lg"><span className="text-black font-bold text-xl">Customization:</span> {customization}</p>
           <p className="text-lg">
