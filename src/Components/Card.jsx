@@ -1,22 +1,24 @@
 import { useNavigate } from "react-router-dom";
+import PropType from "prop-types";
 
 const Card = ({item}) => {
     const navigate = useNavigate();
+    const {_id, itemName, imageUrl, subcategoryName, shortDescription, price, rating, processingTime} = item; 
 
     const handleViewDetails = (itemId) => {
             navigate(`/viewdetails/${itemId}`);
       };
     return (
-        <div className="border border-base-content bg-white rounded-lg shadow-md p-6">
-        <img src={item.imageUrl} alt={item.itemName} className="w-full h-48 object-cover mb-4" />
-        <h2 className="text-lg text-gray-600 font-semibold mb-2">{item.itemName}</h2>
-        <p className="text-gray-600 mb-2">Subcategory: {item.subcategoryName}</p>
-        <p className="text-gray-600 mb-2">Short Description: {item.shortDescription}</p>
-        <p className="text-gray-600 mb-2">Price: ${item.price}</p>
-        <p className="text-gray-600 mb-2">Rating: {item.rating}</p>
-        <p className="text-gray-600 mb-2">Processing Time: {item.processingTime}</p>
+        <div className="border border-base-content  rounded-lg shadow-md p-6">
+        <img src={imageUrl} alt={itemName} className="w-full h-48 object-cover mb-4" />
+        <h2 className="text-lg  font-semibold mb-2">{itemName}</h2>
+        <p className=" text-base-content mb-2">Subcategory: {subcategoryName}</p>
+        <p className=" text-base-content mb-2">Short Description: {shortDescription}</p>
+        <p className=" text-base-content mb-2">Price: ${price}</p>
+        <p className=" text-base-content mb-2">Rating: {rating}</p>
+        <p className=" text-base-content mb-2">Processing Time: {processingTime}</p>
         <button
-          onClick={() => handleViewDetails(item._id)}
+          onClick={() => handleViewDetails(_id)}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           View Details
@@ -24,5 +26,10 @@ const Card = ({item}) => {
       </div>
     );
 };
+
+Card.propTypes = {
+    item: PropType.object.isRequired,
+    handleViewDetails: PropType.func.isRequired
+}
 
 export default Card;

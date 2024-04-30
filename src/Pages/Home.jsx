@@ -73,8 +73,8 @@ const Home = () => {
         </div>
       </div>
 
-      <Subcategory />
       <Joinsection />
+      <Subcategory />
       <Trending />
     </div>
   );

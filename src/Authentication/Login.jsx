@@ -2,12 +2,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useContext, useState } from "react";
-import { FaEye, FaEyeSlash,  FaGithub, FaGoogle, FaTwitter,  } from "react-icons/fa6";
+import { FaEye, FaEyeSlash,  FaGithub, FaGoogle, } from "react-icons/fa6";
 import { Helmet } from "react-helmet-async";
 import { Context } from "../context/MyContextProvider";
 
 const Login = () => {
-  const { signInWithGitHub, signInWithTwitter, logInUser, signInWithGoogle, setLoader } = useContext(Context);
+  const { signInWithGitHub, logInUser, signInWithGoogle, setLoader, isChecked } = useContext(Context);
   const location = useLocation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -31,21 +31,6 @@ const Login = () => {
       });
   };
   
-
-  const twitterSignIn = () => {
-    signInWithTwitter()
-      .then(() => {
-        setLoader(true);
-        setLoader(false);
-        toast.success("Login with Twitter Successful");
-        navigate(location?.state ? location.state : "/");
-        setLoader(false);
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      })
-  }
-
   const gitHubSignIn = () => {
     signInWithGitHub()
       .then(() => {
@@ -85,11 +70,11 @@ const Login = () => {
       <Helmet>
         <title>Login Page</title>
       </Helmet>
-      <div className="w-full mx-auto max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800">
+      <div className={`w-full my-10 mx-auto max-w-md p-8 space-y-3 rounded-xl ${isChecked ? "bg-base-200 " : "bg-base-100 text-white"}`}>
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-1 text-sm">
-            <label htmlFor="email" className="block text-gray-600">
+            <label htmlFor="email" className="block text-base-content">
               Username
             </label>
             <input
@@ -99,7 +84,7 @@ const Login = () => {
               })}
               type="email"
               placeholder="leroy@jenkins.com"
-              className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-violet-600"
+              className="w-full px-3 py-2 border rounded-md border-gray-300  text-base-content focus:border-violet-600"
             />
             {errors.email && (
               <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -108,7 +93,7 @@ const Login = () => {
           <div className="space-y-1 text-sm">
             <label
               htmlFor="password"
-              className=" text-gray-600 flex justify-between items-center"
+              className=" text-base-content flex justify-between items-center"
             >
               <span>Password</span>
               <span
@@ -136,12 +121,12 @@ const Login = () => {
               })}
               type={showPassword ? "text" : "password"}
               placeholder="*****"
-              className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-violet-600"
+              className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
             />
             {errors.password && (
               <p className="text-red-500 text-sm">{errors.password.message}</p>
             )}
-            <div className="flex justify-end text-xs text-gray-600">
+            <div className="flex justify-end text-xs text-base-content">
               <Link to="#">Forgot Password?</Link>
             </div>
           </div>
@@ -153,7 +138,7 @@ const Login = () => {
           </button>
         </form>
         
-        <p className="text-xs text-center sm:px-6 text-gray-600">
+        <p className="text-xs text-center sm:px-6 text-base-content">
           Don’t have an account?{" "}
           <Link to="/register" className="underline text-lg text-blue-800">
             Sign up
@@ -161,7 +146,7 @@ const Login = () => {
         </p>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
-          <p className="px-3 text-sm text-gray-600">
+          <p className="px-3 text-sm text-base-content">
             Login with social accounts
           </p>
           <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>

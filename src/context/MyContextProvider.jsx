@@ -21,7 +21,6 @@ const MyContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
   const [stateLoader, setStateLoader] = useState(true);
-  const [storedValue, setStoredValue] = useState();
   const [isChecked, setIsChecked] = useState(false);
 
   const googleProvider = new GoogleAuthProvider();
@@ -77,24 +76,24 @@ const MyContextProvider = ({ children }) => {
   };
 
   const handleChange = () => {
-    setIsChecked(!isChecked);
-    const newTheme = !isChecked ? "dracula" : "light";
-    document.documentElement.setAttribute("data-theme", newTheme);
+    const newChecked = !isChecked;
+    setIsChecked(newChecked);
+    localStorage.setItem("isChecked", newChecked);
   };
-
+  
   useEffect(() => {
-    setStoredValue(localStorage.getItem("isChecked"));
-    if (storedValue === "true") {
-      setIsChecked(true);
-    } else {
-      setIsChecked(false);
+    const storedChecked = localStorage.getItem("isChecked");
+    if (storedChecked !== null) {
+      setIsChecked(storedChecked === "true");
     }
   }, []);
-
+  
   useEffect(() => {
-    localStorage.setItem("isChecked", isChecked);
+    const newTheme = isChecked ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
   }, [isChecked]);
-
+  
+ 
   useEffect(() => {
     setLoader(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {

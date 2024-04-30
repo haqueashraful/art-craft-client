@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { Context } from "../context/MyContextProvider";
 
 const Register = () => {
-  const { profileUpdate, registerUser, setLoader } = useContext(Context);
+  const { profileUpdate, registerUser, setLoader, isChecked } = useContext(Context);
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const Register = () => {
       <Helmet>
         <title>Register Page</title>
       </Helmet>
-      <div className="w-full mx-auto max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-50 text-gray-800">
+      <div className={`w-full my-10 mx-auto max-w-md p-4 rounded-md shadow sm:p-8  ${isChecked ? "bg-base-200 " : "bg-base-100 text-white"}`}>
         <h2 className="mb-3 text-3xl font-semibold text-center">
           Create your account
         </h2>
@@ -62,7 +62,7 @@ const Register = () => {
                 {...register("name", { required: "Name is required" })}
                 type="text"
                 placeholder="John Doe"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-violet-600"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
               />
               {errors.name && (
                 <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -76,7 +76,7 @@ const Register = () => {
                 {...register("photo_url")}
                 type="text"
                 placeholder="Photo URL"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-violet-600"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
               />
             </div>
             <div className="space-y-2">
@@ -90,7 +90,7 @@ const Register = () => {
                 })}
                 type="email"
                 placeholder="leroy@jenkins.com"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-violet-600"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
               />
               {errors.email && (
                 <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -126,7 +126,7 @@ const Register = () => {
                 })}
                 type={showPassword ? "text" : "password"}
                 placeholder="*****"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-violet-600"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
               />
               {errors.password && (
                 <p className="text-red-500 text-sm">
@@ -143,9 +143,9 @@ const Register = () => {
           </button>
         </form>
 
-        <p className="text-sm text-center text-gray-600">
-          Have an account?
-          <Link to="/login" className="underline text-lg text-blue-800 hover:underline">
+        <p className="text-sm text-center text-base-content">
+         Already Have an account?
+          <Link to="/login" className="underline text-lg text-blue-400 hover:underline">
             Sign In here
           </Link>
         </p>

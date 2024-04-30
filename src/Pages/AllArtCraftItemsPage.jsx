@@ -10,7 +10,7 @@ const AllArtCraftItemsPage = () => {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
-  const { loader } = useContext(Context);
+  const { loader, isChecked } = useContext(Context);
 
   useEffect(() => {
     fetch("https://art-craft-server.vercel.app/allArtCraft")
@@ -58,8 +58,8 @@ const AllArtCraftItemsPage = () => {
           />
         </span>
       </h1>
-      <table className="divide-y divide-gray-200 w-full text-black">
-        <thead className="bg-gray-500 text-white">
+      <table className="divide-y divide-gray-200 w-full text-base-content">
+        <thead className={`${isChecked ? "bg-black" : "bg-gray-400"} text-white `}>
           <tr>
             <th className="text-center text-xs font-medium uppercase tracking-wider">sl no</th> 
             <th className="lg:px-6 px-2 lg:py-3 text-center text-xs font-medium uppercase tracking-wider">
@@ -79,7 +79,7 @@ const AllArtCraftItemsPage = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="bg-gray-200 divide-y text-black text-center divide-gray-200">
+        <tbody className=" divide-y text-base-content text-center divide-gray-200">
           {currentItems.map((item, index) => (
             <tr key={item._id}>
               <td>{index+1}</td>

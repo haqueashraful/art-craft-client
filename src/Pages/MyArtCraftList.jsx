@@ -118,21 +118,21 @@ const MyArtCraftList = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredCrafts.map((craft) => (
-          <div key={craft._id} className="bg-white rounded-lg shadow-md p-6">
+          <div key={craft._id} className="border border-base-content rounded-lg shadow-md p-6">
             <img
               src={craft.imageUrl}
               className="w-full h-48 object-cover mb-4"
               alt={craft.title}
             />
             <h2 className="text-lg font-semibold mb-2">{craft.itemName}</h2>
-            <p className="text-gray-600 mb-2">Price: ${craft.price}</p>
-            <p className="text-gray-600 mb-2 flex items-center gap-1">
+            <p className="text-base-content mb-2">Price: ${craft.price}</p>
+            <p className="text-base-content mb-2 flex items-center gap-1">
               Rating: {craft.rating} <FaStar className="text-yellow-500" />
             </p>
-            <p className="text-gray-600 mb-2">
+            <p className="text-base-content mb-2">
               Customization: {craft.customization}
             </p>
-            <p className="text-gray-600 mb-2">
+            <p className="text-base-content mb-2">
               Stock Status: {craft.stockStatus}
             </p>
             <div className="flex justify-between items-center">

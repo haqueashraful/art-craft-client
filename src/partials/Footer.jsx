@@ -1,10 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import { Context } from "../context/MyContextProvider";
 
 const Footer = () => {
+  const {isChecked} = useContext(Context);
   return (
     <div className="">
-      <footer className="footer px-5 lg:px-20 p-10 bg-black text-white flex justify-between items-center">
+<footer className={`footer px-5 lg:px-20 p-10 ${isChecked ? 'bg-black' : 'bg-gray-500'} text-white flex justify-between items-center`}>
         <aside>
           <svg
             xmlns="http://www.w3.org/2000/svg"

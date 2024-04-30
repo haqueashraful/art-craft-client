@@ -19,7 +19,7 @@ const Trending = () => {
       <div className=" col-span-3 grid grid-cols-3 gap-4">
         {data.slice(0, 6).map((item) => (
           <div
-            className="p-2 bg-[#f5f5f5] rounded-md overflow-hidden w-full h-[300px]"
+            className="p-2 border border-base-content rounded-md overflow-hidden w-full h-[300px]"
             key={item._id}
           >
             <img className="h-full w-full" src={item.imageUrl} alt="" />
