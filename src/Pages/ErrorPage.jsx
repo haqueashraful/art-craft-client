@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import notfound from "../assets/notfound.svg";
+import notfound from "../assets/404.svg";
 
 const ErrorPage = () => {
   return (

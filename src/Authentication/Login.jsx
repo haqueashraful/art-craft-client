@@ -166,7 +166,7 @@ const Login = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
         </div>
-        <div className="flex justify-center space-x-4">
+        <div className="flex justify-center items-center space-x-4">
           <button
             onClick={googleSignIn}
             aria-label="Log in with Google"
@@ -174,9 +174,9 @@ const Login = () => {
           >
             <FaGoogle className=" size-8" />
           </button>
-          <button onClick={twitterSignIn} aria-label="Log in with Twitter" className="p-3 rounded-sm">
-            <FaTwitter className=" size-8" />
-          </button>
+          <div>
+            <p>Or</p>
+          </div>
           <button onClick={gitHubSignIn} aria-label="Log in with GitHub" className="p-3 rounded-sm">
             <FaGithub className=" size-8" />
           </button>

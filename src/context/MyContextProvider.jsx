@@ -26,7 +26,6 @@ const MyContextProvider = ({ children }) => {
 
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
-  const twitterProvider = new TwitterAuthProvider();
 
   const profileUpdate = (name, photo_url) => {
     setLoad(true);
@@ -61,10 +60,6 @@ const MyContextProvider = ({ children }) => {
   const signInWithGitHub = () => {
     setLoader(true);
     return signInWithPopup(auth, gitHubProvider);
-  };
-  const signInWithTwitter = () => {
-    setLoader(true);
-    return signInWithPopup(auth, twitterProvider);
   };
   const logOutUser = () => {
     return signOut(auth)
@@ -120,7 +115,6 @@ const MyContextProvider = ({ children }) => {
     profileUpdate,
     signInWithGoogle,
     signInWithGitHub,
-    signInWithTwitter,
     setLoad,
     setLoader,
     setStateLoader,
