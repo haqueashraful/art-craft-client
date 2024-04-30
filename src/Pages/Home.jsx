@@ -5,6 +5,7 @@ import Card from "../Components/Card";
 import Joinsection from "../Components/Joinsection";
 import { Typewriter } from "react-simple-typewriter";
 import Trending from "../Components/Trending";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -27,6 +28,9 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>ArtCraft Home</title>
+      </Helmet>
       <Banner />
 
       <div className="my-10">
