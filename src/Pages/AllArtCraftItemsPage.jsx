@@ -74,7 +74,7 @@ const AllArtCraftItemsPage = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y text-center divide-gray-200">
+        <tbody className="bg-gray-200 divide-y text-black text-center divide-gray-200">
           {currentItems.map((item, index) => (
             <tr key={item._id}>
               <td>{index+1}</td>
