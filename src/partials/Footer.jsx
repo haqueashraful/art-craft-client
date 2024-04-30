@@ -6,7 +6,7 @@ const Footer = () => {
   const {isChecked} = useContext(Context);
   return (
     <div className="">
-<footer className={`footer px-5 lg:px-20 p-10 ${isChecked ? 'bg-black' : 'bg-gray-500'} text-white flex justify-between items-center`}>
+<footer className={`footer px-5 lg:px-20 p-10 ${isChecked ? 'bg-black/80' : 'bg-gray-500/50'} text-white flex justify-between items-center`}>
         <aside>
           <svg
             xmlns="http://www.w3.org/2000/svg"

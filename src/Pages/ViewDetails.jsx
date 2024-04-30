@@ -7,7 +7,7 @@ import Loading from "../Components/Loading";
 import { FaStar } from "react-icons/fa6";
 
 const ViewDetails = () => {
-  const { loader } = useContext(Context);
+  const { loader, isChecked } = useContext(Context);
   const [isFavorite, setIsFavorite] = useState(false);
   const data = useLoaderData();
   // const { id } = useParams();
@@ -83,14 +83,14 @@ const category = subcategoryName.split("_").map(capitalizeFirstLetter).join(" ")
         </div>
         <div className=" h-full p-4 rounded-lg shadow-md w-full space-y-4 flex flex-col justify-center items-start">
           <h1 className="text-3xl font-bold mb-2"> {itemName}</h1>
-          <p className="text-lg"><span className="text-black font-bold text-xl">Category:</span> {category}</p>
-          <p className="text-gray-500 mb-2 text-lg">{shortDescription}</p>
-          <p className="text-lg"><span className="text-black font-bold text-xl">Customization:</span> {customization}</p>
+          <p className="text-lg"><span className="text-base-content font-bold text-xl">Category:</span> {category}</p>
+          <p className="text-base-content mb-2 text-lg">{shortDescription}</p>
+          <p className="text-lg"><span className="text-base-content font-bold text-xl">Customization:</span> {customization}</p>
           <p className="text-lg">
-           <span className="text-black font-bold text-xl">Rating:</span> {rating} <FaStar className="inline-block text-yellow-500"></FaStar>
+           <span className="text-base-content font-bold text-xl">Rating:</span> {rating} <FaStar className="inline-block text-yellow-500"></FaStar>
           </p>
-            <p className="text-lg"><span className="text-black font-bold text-xl">Price:</span> {`${price} per month`}</p>
-            <p className="text-lg"><span className="text-black font-bold text-xl">Processing Time:</span> {`${processingTime} `}</p>
+            <p className="text-lg"><span className="text-base-content font-bold text-xl">Price:</span> {`${price} per month`}</p>
+            <p className="text-lg"><span className="text-base-content font-bold text-xl">Processing Time:</span> {`${processingTime} `}</p>
         </div>
       </div>
     </div>
