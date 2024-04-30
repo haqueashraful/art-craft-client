@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SubCategoryCard from "../Components/SubCategoryCard";
 import { Typewriter } from "react-simple-typewriter";
+import { Helmet } from "react-helmet-async";
 
 const Subcategory = () => {
   const [subcategoryItem, setSubcategoryItem] = useState([]);
@@ -13,6 +14,10 @@ const Subcategory = () => {
   });
 
   return (
+    <>
+    <Helmet>
+      <title>ArtCraft SubCategory</title>
+    </Helmet>
     <div className="my-10">
       <div className="flex justify-center items-center">
         <h1 className="text-3xl font-bold mb-6">
@@ -35,6 +40,7 @@ const Subcategory = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

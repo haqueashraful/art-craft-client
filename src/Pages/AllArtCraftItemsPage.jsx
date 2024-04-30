@@ -4,6 +4,7 @@ import Loading from "../Components/Loading";
 import { Context } from "../context/MyContextProvider";
 import { Typewriter } from "react-simple-typewriter";
 import { FaStar } from "react-icons/fa6";
+import { Helmet } from "react-helmet-async";
 
 const AllArtCraftItemsPage = () => {
   const [items, setItems] = useState([]);
@@ -39,6 +40,10 @@ const AllArtCraftItemsPage = () => {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>All Art & Craft Items</title>
+    </Helmet>
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl text-base-content font-bold mb-6">
         <span style={{ color: "red", fontWeight: "bold" }}>
@@ -126,6 +131,7 @@ const AllArtCraftItemsPage = () => {
         </ul>
       </div>
     </div>
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ import { MdDelete } from "react-icons/md";
 import { RiEdit2Fill } from "react-icons/ri";
 import { Typewriter } from "react-simple-typewriter";
 import { Context } from "../context/MyContextProvider";
+import { Helmet } from "react-helmet-async";
 
 const MyArtCraftList = () => {
   const [crafts, setCrafts] = useState([]);
@@ -81,6 +82,10 @@ const MyArtCraftList = () => {
   const filteredCrafts = filter === "all" ? crafts : crafts.filter(craft => craft.customization === filter);
 
   return (
+    <>
+    <Helmet>
+      <title>My Art & Craft List</title>
+    </Helmet>
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center">
         <div className="py-10">
@@ -154,6 +159,7 @@ const MyArtCraftList = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

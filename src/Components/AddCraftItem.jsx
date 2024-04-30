@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Context } from "../context/MyContextProvider";
 import { toast } from "react-toastify";
 import { Typewriter } from "react-simple-typewriter";
+import { Helmet } from "react-helmet-async";
 
 const AddCraftItem = () => {
   const {
@@ -39,6 +40,10 @@ const AddCraftItem = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Add Craft Item</title>
+    </Helmet>
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">
         <span style={{ color: "red", fontWeight: "bold" }}>
@@ -297,6 +302,7 @@ const AddCraftItem = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 
