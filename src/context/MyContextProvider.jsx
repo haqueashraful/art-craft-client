@@ -89,7 +89,7 @@ const MyContextProvider = ({ children }) => {
   }, []);
   
   useEffect(() => {
-    const newTheme = isChecked ? "light" : "dark";
+    const newTheme = isChecked ? "light" : "sunset";
     document.documentElement.setAttribute("data-theme", newTheme);
   }, [isChecked]);
   
