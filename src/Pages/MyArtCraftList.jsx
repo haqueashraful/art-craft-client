@@ -31,7 +31,7 @@ const MyArtCraftList = () => {
   const handleDelete = (id) => {
     swal({
       title: "Are you sure?",
-      text: "Are you sure that you want to leave this page?",
+      text: "Are you sure that you want to delete this item?",
       icon: "warning",
       dangerMode: true,
     }).then((willDelete) => {
@@ -59,15 +59,32 @@ const MyArtCraftList = () => {
   if (loader) {
     return <Loading />;
   }
-
+  if(crafts.length === 0){
+    return (
+      <div>
+        <h1 className="text-3xl font-bold text-center py-10 mb-6">
+          <span style={{ color: "red", fontWeight: "bold" }}>
+            <Typewriter
+              words={["No Art & Craft Found"]}
+              loop={100}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </span>
+        </h1>
+      </div>
+     )
+  }
   const filteredCrafts = filter === "all" ? crafts : crafts.filter(craft => craft.customization === filter);
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center">
-        <div>
+        <div className="py-10">
           <h1 className="text-3xl font-bold mb-6">
-            {" "}
             <span style={{ color: "red", fontWeight: "bold" }}>
               <Typewriter
                 words={["My Art & Craft List"]}
@@ -81,10 +98,10 @@ const MyArtCraftList = () => {
             </span>
           </h1>
         </div>
-        <div className="flex justify-center items-center gap-2">
-          <span className=" text-xl">Filter:</span>
+        <div className=" flex justify-center items-center gap-2">
+          <h1 className=" text-xl">Filter by Customization:</h1>
           <select
-            className="select select-primary w-full"
+            className=" select select-primary"
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
           >

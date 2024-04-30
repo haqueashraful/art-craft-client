@@ -25,6 +25,11 @@ const ViewDetails = () => {
     stockStatus,
   } = data;
 
+const capitalizeFirstLetter = (str) => {
+  return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};
+const category = subcategoryName.split("_").map(capitalizeFirstLetter).join(" ");
+
   const handleToggleFavorite = () => {
     const favoriteEstates = JSON.parse(localStorage.getItem("favorite")) || [];
 
@@ -46,41 +51,46 @@ const ViewDetails = () => {
   }
 
   return (
-    <div className="max-w-xl mx-auto p-4">
+    <div className="w-full mx-auto p-4">
       <Helmet>
         <title>{itemName}</title>
       </Helmet>
-      <div className="flex justify-between items-center">
-        <div className="flex gap-5 items-center">
-          <h1 className="text-xl font-bold mb-2">{itemName}</h1>
-          <button onClick={handleToggleFavorite}>
-            {isFavorite ? (
-              <FaHeart className="w-5 h-5 mb-2 text-red-500" />
-            ) : (
-              <FaRegHeart className="w-5 h-5 mb-2" />
-            )}
-          </button>
+
+      <div className=" w-full lg:grid  grid-cols-2 justify-center items-center gap-5">
+        <div className=" w-full p-4 rounded-lg shadow-md">
+          <div className="flex justify-between items-center">
+            <div className="flex gap-5 items-center">
+              <h1 className="text-xl font-bold mb-2">{itemName}</h1>
+              <button onClick={handleToggleFavorite}>
+                {isFavorite ? (
+                  <FaHeart className="w-5 h-5 mb-2 text-red-500" />
+                ) : (
+                  <FaRegHeart className="w-5 h-5 mb-2" />
+                )}
+              </button>
+            </div>
+            <h1 className="text-sm font-bold bg-green-400 rounded-full px-2 text-white">
+              status:<span className="text-lg"> {stockStatus}</span>
+            </h1>
+            <p>{category}</p>
+          </div>
+          <div className="mb-4">
+            <img
+              src={imageUrl}
+              alt={itemName}
+              className="w-full h-[400px] rounded-lg"
+            />
+          </div>
         </div>
-        <h1 className="text-sm font-bold bg-green-400 rounded-full px-2 text-white">
-          status:<span className="text-lg"> {stockStatus}</span>
-        </h1>
-        <p>{subcategoryName}</p>
-      </div>
-      <div className="mb-4">
-        <img
-          src={imageUrl}
-          alt={itemName}
-          className="w-full h-[400px] rounded-lg"
-        />
-      </div>
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h1 className="text-lg font-bold mb-2">{itemName}</h1>
-        <p className="text-gray-700 mb-2">{shortDescription}</p>
-        <p>{customization}</p>
-        <p>{rating} <FaStar className="inline-block text-yellow-500"></FaStar></p>
-        <div className="flex items-center gap-3 text-gray-500 mb-2">
-          <span>{`${price} per month`}</span>
-          <span>{`${processingTime} `}</span>
+        <div className=" h-full p-4 rounded-lg shadow-md w-full space-y-4 flex flex-col justify-center items-start">
+          <h1 className="text-lg font-bold mb-2"><span className="text-black font-bold text-xl">Item Name:</span> {itemName}</h1>
+          <p className="text-gray-500 mb-2 text-lg">{shortDescription}</p>
+          <p className="text-lg"><span className="text-black font-bold text-xl">Customization:</span> {customization}</p>
+          <p className="text-lg">
+           <span className="text-black font-bold text-xl">Rating:</span> {rating} <FaStar className="inline-block text-yellow-500"></FaStar>
+          </p>
+            <p className="text-lg"><span className="text-black font-bold text-xl">Price:</span> {`${price} per month`}</p>
+            <p className="text-lg"><span className="text-black font-bold text-xl">Processing Time:</span> {`${processingTime} `}</p>
         </div>
       </div>
     </div>

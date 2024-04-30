@@ -234,7 +234,7 @@ const AddCraftItem = () => {
               Processing Time:
             </label>
             <input
-              type="number"
+              type="text"
               id="processingTime"
               name="processingTime"
               {...register("processingTime", { required: true })}

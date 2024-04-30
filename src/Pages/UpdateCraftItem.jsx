@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
@@ -14,18 +15,9 @@ const UpdateCraftItem = () => {
     reset,
   } = useForm();
 
-  const watchImageUrl = watch("imageUrl");
-  const watchSubcategoryName = watch("subcategoryName");
-  const watchShortDescription = watch("shortDescription");
-  const watchPrice = watch("price");
-  const watchRating = watch("rating");
-  const watchCustomization = watch("customization");
-  const watchProcessingTime = watch("processingTime");
-  const watchStockStatus = watch("stockStatus");
-  const watchItemName = watch("itemName");
+
 
   const craft = useLoaderData();
-  console.log(craft);
 
   const {
     _id,
@@ -50,21 +42,38 @@ const UpdateCraftItem = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        toast.success("Form submission response:", data);
+        toast.success("Update Item successFully");
         reset();
         navigate("/myartcraftlist");
       });
   };
 
+
+
+  const watchImageUrl = watch("imageUrl", imageUrl);
+  const watchSubcategoryName = watch("subcategoryName", subcategoryName);
+  const watchShortDescription = watch("shortDescription", shortDescription);
+  const watchPrice = watch("price", price);
+  const watchRating = watch("rating", rating);
+  const watchCustomization = watch("customization", customization);
+  const watchProcessingTime = watch("processingTime", processingTime);
+  const watchStockStatus = watch("stockStatus", stockStatus);
+  const watchItemName = watch("itemName", itemName);
+
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setValue({ ...watch, [name]: value });
+    setValue(name, value);
   };
+  
 
   return (
+    <>
+    <Helmet>
+      <title>Update Craft Item</title>
+    </Helmet>
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">
-        {" "}
         <span style={{ color: "red", fontWeight: "bold" }}>
           <Typewriter
             words={["Update Craft Item"]}
@@ -91,9 +100,9 @@ const UpdateCraftItem = () => {
               type="text"
               id="imageUrl"
               name="imageUrl"
-              value={watchImageUrl || imageUrl}
+              value={watchImageUrl}
               onChange={handleInputChange}
-              {...register("imageUrl", { required: true })}
+              {...register("imageUrl", { required: false})}
               className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
                 errors.imageUrl ? "border-red-500" : ""
               }`}
@@ -112,9 +121,9 @@ const UpdateCraftItem = () => {
               type="text"
               id="itemName"
               name="itemName"
-              value={watchItemName || itemName}
+              value={watchItemName}
               onChange={handleInputChange}
-              {...register("itemName", { required: true })}
+              {...register("itemName", { required: false})}
               className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
                 errors.itemName ? "border-red-500" : ""
               }`}
@@ -136,9 +145,9 @@ const UpdateCraftItem = () => {
             <select
               id="subcategoryName"
               name="subcategoryName"
-              value={watchSubcategoryName || subcategoryName}
+              value={watchSubcategoryName}
               onChange={handleInputChange}
-              {...register("subcategoryName", { required: true })}
+              {...register("subcategoryName", { required: false})}
               className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
                 errors.subcategoryName ? "border-red-500" : ""
               }`}
@@ -195,9 +204,9 @@ const UpdateCraftItem = () => {
             <select
               id="stockStatus"
               name="stockStatus"
-              value={watchStockStatus || stockStatus}
+              value={watchStockStatus}
               onChange={handleInputChange}
-              {...register("stockStatus", { required: true })}
+              {...register("stockStatus", { required: false})}
               className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
                 errors.stockStatus ? "border-red-500" : ""
               }`}
@@ -223,9 +232,9 @@ const UpdateCraftItem = () => {
             id="shortDescription"
             name="shortDescription"
             rows="4"
-            value={watchShortDescription || shortDescription}
+            value={watchShortDescription}
             onChange={handleInputChange}
-            {...register("shortDescription", { required: true })}
+            {...register("shortDescription", { required: false})}
             className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
               errors.shortDescription ? "border-red-500" : ""
             }`}
@@ -245,9 +254,9 @@ const UpdateCraftItem = () => {
               type="number"
               id="price"
               name="price"
-              value={watchPrice || price}
+              value={watchPrice}
               onChange={handleInputChange}
-              {...register("price", { required: true })}
+              {...register("price", { required: false})}
               className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
                 errors.price ? "border-red-500" : ""
               }`}
@@ -264,9 +273,9 @@ const UpdateCraftItem = () => {
               type="number"
               id="rating"
               name="rating"
-              value={watchRating || rating}
+              value={watchRating}
               onChange={handleInputChange}
-              {...register("rating", { required: true })}
+              {...register("rating", { required: false})}
               className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
                 errors.rating ? "border-red-500" : ""
               }`}
@@ -282,9 +291,9 @@ const UpdateCraftItem = () => {
             <select
               id="customization"
               name="customization"
-              value={watchCustomization || customization}
+              value={watchCustomization}
               onChange={handleInputChange}
-              {...register("customization", { required: true })}
+              {...register("customization", { required: false})}
               className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
                 errors.customization ? "border-red-500" : ""
               }`}
@@ -309,9 +318,9 @@ const UpdateCraftItem = () => {
               type="text"
               id="processingTime"
               name="processingTime"
-              value={watchProcessingTime || processingTime}
+              value={watchProcessingTime}
               onChange={handleInputChange}
-              {...register("processingTime", { required: true })}
+              {...register("processingTime", { required: false})}
               className={`rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full ${
                 errors.processingTime ? "border-red-500" : ""
               }`}
@@ -334,6 +343,7 @@ const UpdateCraftItem = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

@@ -5,12 +5,11 @@ import PropTypes from "prop-types";
 import { Context } from "../context/MyContextProvider";
 
 const PrivateRoute = ({ children }) => {
-  const {user, stateLoader } = useContext(Context);
+  const {user, loader } = useContext(Context);
   const location = useLocation();
 
-  console.log(stateLoader);
 
-  if (stateLoader) {
+  if (loader) {
     return <Loading />;
   }
 
