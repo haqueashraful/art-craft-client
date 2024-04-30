@@ -9,10 +9,10 @@ const Nav = () => {
     useContext(Context);
 
   return (
-    <div className="navbar bg-base-100 mt-5 lg:px-20 px-5">
+    <div className="navbar  bg-base-100 mt-5 lg:px-20 px-0 lg:px-5">
       <div className="navbar-start items-center">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost !p-0 lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -54,7 +54,7 @@ const Nav = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn-rn text-xl">
+        <Link to="/" className="btn-rn !text-base lg:text-xl">
         ArtCraft Store
         </Link>
       </div>

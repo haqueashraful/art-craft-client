@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Context } from "../context/MyContextProvider";
@@ -7,7 +7,7 @@ import Loading from "../Components/Loading";
 import { FaStar } from "react-icons/fa6";
 
 const ViewDetails = () => {
-  const { loader, isChecked } = useContext(Context);
+  const { loader } = useContext(Context);
   const [isFavorite, setIsFavorite] = useState(false);
   const data = useLoaderData();
   // const { id } = useParams();
@@ -68,7 +68,7 @@ const category = subcategoryName.split("_").map(capitalizeFirstLetter).join(" ")
                 )}
               </button>
             </div>
-            <h1 className="text-sm font-bold bg-green-400 rounded-full px-2 text-white">
+            <h1 className="text-sm font-bold hidden lg:block bg-green-400 rounded-full px-2 text-white">
               status:<span className="text-lg"> {stockStatus}</span>
             </h1>
             <p>{category}</p>

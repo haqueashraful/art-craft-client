@@ -44,7 +44,7 @@ const AllArtCraftItemsPage = () => {
     <Helmet>
       <title>All Art & Craft Items</title>
     </Helmet>
-    <div className="container mx-auto px-4 py-8">
+    <div className=" py-8">
       <h1 className="text-3xl text-base-content font-bold mb-6">
         <span style={{ color: "red", fontWeight: "bold" }}>
           <Typewriter
@@ -58,23 +58,23 @@ const AllArtCraftItemsPage = () => {
           />
         </span>
       </h1>
-      <table className="divide-y divide-gray-200 w-full text-base-content">
+      <table className="divide-y divide-gray-200 w-full text-base-content overflow-hidden">
         <thead className={`${isChecked ? "bg-black" : "bg-gray-400"} text-white `}>
           <tr>
-            <th className="text-center text-xs font-medium uppercase tracking-wider">sl no</th> 
-            <th className="lg:px-6 px-2 lg:py-3 text-center text-xs font-medium uppercase tracking-wider">
+            <th className="text-center text-xs hidden md:table-cell font-medium uppercase tracking-wider">sl no</th> 
+            <th className="lg:px-6 px-0 lg:py-3 text-center text-xs font-medium uppercase tracking-wider">
               Image
             </th>
-            <th className="lg:px-6 px-2 lg:py-3 text-center text-xs font-medium uppercase tracking-wider">
+            <th className="lg:px-6 px-0 lg:py-3 text-center text-xs font-medium uppercase tracking-wider">
               Item Name
             </th>
-            <th className="lg:px-6 px-2 lg:py-3 text-center text-xs font-medium uppercase tracking-wider">
+            <th className="lg:px-6 px-0 lg:py-3 hidden md:table-cell text-center text-xs font-medium uppercase tracking-wider">
               Subcategory
             </th>
-            <th className="lg:px-6 px-2 lg:py-3 text-center text-xs font-medium uppercase tracking-wider">
+            <th className="lg:px-6 px-0 lg:py-3 hidden md:table-cell text-center text-xs font-medium uppercase tracking-wider">
               Rating
             </th>
-            <th className="lg:px-6 px-2 lg:py-3 text-center text-xs font-medium uppercase tracking-wider">
+            <th className="lg:px-6 px-0 lg:py-3 text-center text-xs font-medium uppercase tracking-wider">
               Action
             </th>
           </tr>
@@ -82,27 +82,27 @@ const AllArtCraftItemsPage = () => {
         <tbody className=" divide-y text-base-content text-center divide-gray-200">
           {currentItems.map((item, index) => (
             <tr key={item._id}>
-              <td>{index+1}</td>
-              <td className="lg:px-6 px-2 flex justify-center items-center lg:py-4 whitespace-nowrap overflow-hidden">
+              <td className="hidden md:table-cell">{index+1}</td>
+              <td className="lg:px-6 px-0 flex justify-center items-center lg:py-4 whitespace-nowrap overflow-hidden">
                 <img
                   className="lg:w-40 w-20 lg:h-24 h-16"
                   src={item.imageUrl}
                   alt=""
                 />
               </td>
-              <td className="lg:px-6 px-2 lg:py-4 whitespace-nowrap">
+              <td className="lg:px-6 px-0 lg:py-4 max-w-5 md:max-w-max text-wrap text-sm lg:text-lg whitespace-nowrap">
                 {item.itemName}
               </td>
-              <td className="lg:px-6 px-2 lg:py-4 whitespace-nowrap">
+              <td className="lg:px-6 px-0 hidden md:table-cell lg:py-4 whitespace-nowrap">
                 {item.subcategoryName
                   .split("_")
                   .map((word) => capitalizeFirstLetter(word))
                   .join(" ")}
               </td>
-              <td className="lg:px-6 px-2 lg:py-4 whitespace-nowrap">
+              <td className="lg:px-6 px-0 lg:py-4 hidden md:table-cell whitespace-nowrap">
                 {item.rating} <FaStar className="text-yellow-500 inline-block" />
               </td>
-              <td className="lg:px-6 px-2 lg:py-4 whitespace-nowrap text-sm font-medium">
+              <td className="lg:px-6 px-0 lg:py-4 whitespace-nowrap text-sm font-medium">
                 <Link
                   to={`/viewdetails/${item._id}`}
                   className="text-indigo-600 hover:text-indigo-900"

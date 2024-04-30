@@ -6,7 +6,7 @@ const Main = () => {
     return (
         <div className="flex flex-col justify-between min-h-screen">
             <Nav />
-           <div className="mx-2 lg:mx-20">
+           <div className="mx-1 lg:mx-20">
            <Outlet />
            </div>
             <Footer />

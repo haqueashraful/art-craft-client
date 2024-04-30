@@ -87,7 +87,7 @@ const MyArtCraftList = () => {
       <title>My Art & Craft List</title>
     </Helmet>
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center">
+      <div className="lg:flex justify-between items-center">
         <div className="py-10">
           <h1 className="text-3xl font-bold mb-6">
             <span style={{ color: "red", fontWeight: "bold" }}>
